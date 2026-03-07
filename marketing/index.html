@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Naampie – Babynamen kiezen, samen</title>
+  <meta name="description" content="Swipe door honderden babynamen, sla je favorieten op en vergelijk ze met je partner via QR-code. Beschikbaar in de App Store." />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #fffaf7;
+      color: #333;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(160deg, #b3d9f7 0%, #f7b3d4 50%, #d4b3f7 100%);
+      padding: 80px 24px 64px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.5);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 72px);
+      font-weight: 800;
+      color: #222;
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: clamp(17px, 3vw, 22px);
+      color: #444;
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .app-store-btn {
+      display: inline-block;
+      background: #111;
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+
+    .app-store-btn:hover { opacity: 0.8; }
+
+    .app-store-btn span {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      opacity: 0.7;
+    }
+
+    /* Cards preview */
+    .preview {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 56px;
+      flex-wrap: wrap;
+    }
+
+    .name-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px 28px;
+      font-size: 26px;
+      font-weight: 600;
+      color: #333;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transform: rotate(-2deg);
+    }
+
+    .name-card:nth-child(2) { transform: rotate(1deg); background: #f0f7ff; }
+    .name-card:nth-child(3) { transform: rotate(-1.5deg); background: #fff0f7; }
+
+    /* Features */
+    .features {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .feature {
+      background: #fff;
+      border-radius: 20px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .feature-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+    }
+
+    .feature h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      font-size: 15px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* How it works */
+    .how {
+      background: linear-gradient(135deg, #e8f4fd 0%, #fde8f4 100%);
+      padding: 72px 24px;
+      text-align: center;
+    }
+
+    .how h2 {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 48px;
+    }
+
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 180px;
+      max-width: 220px;
+    }
+
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-size: 20px;
+      font-weight: 800;
+      color: #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+
+    .step h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      padding: 80px 24px;
+    }
+
+    .cta h2 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      color: #222;
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      font-size: 17px;
+      color: #666;
+      margin-bottom: 32px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid #eee;
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    footer a { color: #aaa; }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-badge">Babynamen app</div>
+    <h1>Naampie</h1>
+    <p>Swipe door honderden namen, sla je favorieten op en ontdek samen welke naam jullie allebei mooi vinden.</p>
+    <a href="#" class="app-store-btn">
+      <span>Download in de</span>
+      App Store
+    </a>
+
+    <div class="preview">
+      <div class="name-card">Emma</div>
+      <div class="name-card">Liam</div>
+      <div class="name-card">Sophie</div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <div class="feature-icon">&#x1F4F1;</div>
+      <h3>Swipe door namen</h3>
+      <p>Swipe naar rechts als je een naam mooi vindt, naar links als je hem niks vindt, en omlaag als je er nog over wilt nadenken.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">&#x1F466;&#x1F467;</div>
+      <h3>Jongens &amp; meisjes</h3>
+      <p>Filter op jongensnamen, meisjesnamen of bekijk beide. Kies uit Nederlandse, Engelse, Franstalige namen en meer.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">&#x1F4F7;</div>
+      <h3>Match met je partner</h3>
+      <p>Genereer een QR-code van jouw favorieten en scan die van je partner. De app laat direct zien welke namen jullie allebei mooi vinden.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">&#x2764;&#xFE0F;</div>
+      <h3>Favorieten &amp; misschien</h3>
+      <p>Bewaar namen als favoriet of zet ze op je "misschien"-lijst voor later. Deel je lijstje eenvoudig via de deelfunctie.</p>
+    </div>
+  </section>
+
+  <section class="how">
+    <h2>Hoe werkt het?</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Kies je filters</h4>
+        <p>Selecteer geslacht, achternaam en namenlijst, en stel in hoeveel namen je per sessie wilt bekijken.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Swipe!</h4>
+        <p>Ga door namen heen op je eigen tempo. Undo als je per ongeluk de verkeerde kant op swipt.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Vergelijk</h4>
+        <p>Laat je partner ook swipen en scan elkaars QR-code om te zien waar jullie het over eens zijn.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Klaar om te beginnen?</h2>
+    <p>Gratis te downloaden in de App Store.</p>
+    <a href="#" class="app-store-btn">
+      <span>Download in de</span>
+      App Store
+    </a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Naampie &nbsp;|&nbsp; <a href="mailto:">Contact</a></p>
+  </footer>
+
+</body>
+</html>
